@@ -5,10 +5,10 @@ pipeline {
             steps {
                 script {
                     // Deploy to Kubernetes using kubectl
-                    kubernetesDeploy(
+                    kubernetesDeploy {
                         configs: 'nginx-deployment.yaml',
                         kubeconfigId: 'Kubernetes'  // Replace with your Jenkins credential ID
-                    )
+                    }
                 }
             }
         }
