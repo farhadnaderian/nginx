@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    environment {
+        KUBECONFIG = '/path/to/your/kubeconfig' // Optional, if needed
+    }
+
+    stages {
+        stage('Deploy to Kubernetes') {
+            steps {
+                script {
+                    // Deploy to Kubernetes using kubectl
+                    kubernetesDeploy(
+                        configs: 'nginx-deployment.yaml',
+                        kubeconfigId: 'kubernetes-token'  // Replace with your Jenkins credential ID
+                    )
+                }
+            }
+        }
+    }
+}
