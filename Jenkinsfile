@@ -3,12 +3,10 @@ pipeline {
     stages {
         stage('Deploy to Kubernetes') {
             steps {
-                script {
-                    // Deploy to Kubernetes using kubectl
-                    kubernetesDeploy(
-                        configs: 'nginx-deployment.yaml',
-                        kubeconfigId: 'Kubernetes'  // Replace with your Jenkins credential ID
-                    )
+                sshagent(['KuberSSH']) {
+                    sh '''
+                    ssh root@192.168.176.135 "kubectl apply -f nginx-deployment.yaml"
+                    '''
                 }
             }
         }
