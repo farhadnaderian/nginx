@@ -7,7 +7,7 @@ pipeline {
                     // Deploy to Kubernetes using kubectl
                     kubernetesDeploy(
                         configs: 'nginx-deployment.yaml',
-                        kubeconfigId: 'kubernetes'  // Replace with your Jenkins credential ID
+                        kubeconfigId: 'Kubernetes'  // Replace with your Jenkins credential ID
                     )
                 }
             }
